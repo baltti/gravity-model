@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Гравитационные модели</title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/simple.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" template="tpl-con-title" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Гравитационные модели
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Первый закон географии
+
+Первый закон географии был разработан Уалдо Тоблером в 1970 году и заключается в том, что <mark>«все обычно связано со всем остальным, но то, что находится рядом друг с другом, связано сильнее, чем то, что находится дальше»</mark>.
+
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" template="tpl-con-default-box" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+ 
+## Затухание расстояния 
+
+
+</div>
+
+ <!-- .element: style="font-size: 70px; font-weight: 600; line-height: 1.7" -->
+
+это идея о том, что ___чем дальше вы находитесь от товаров или услуг, тем меньше вероятность, что вы ими воспользуетесь.___
+ 
+ </div>
+
+<!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+ 
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024102337.png" alt="" style="object-fit: scale-down">
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024102355.png" alt="" style="object-fit: scale-down">
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+## Сжатие пространства и времени
+</div>
+
+<!-- .element: style="font-size: 70px; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+Мы можем думать о сжатии пространства-времени как о ___факторе, уменьшающем влияние затухания расстояния.___
+
+Например, богатство, технологии и транспортные системы могут уменьшить влияние сокращения расстояний.
+</div>
+
+<!-- .element: style="font-size: 45px; line-height: 1.7; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241025093954.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+## Закон притяжения в ритейле Райли
+</div>
+
+<!-- .element: style="font-size: 60px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+Название происходит от <mark>закона гравитации Ньютона</mark>, который объясняет и предсказывает ___гравитационное притяжение между астрономическими телами различной массы___
+</div>
+
+<!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+## Гравитационная модель Райли
+</div>
+
+<!-- .element: style="font-size: 70px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+центры торговли *привлекают покупателей из соседних населённых пунктов* пропорционально численности населения и обратно пропорционально расстоянию между ними.
+</div>
+
+<!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+## Гравитационная модель Райли
+</div>
+
+<!-- .element: style="font-size: 60px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+`$\frac{B_{a}}{B_{b}} = \frac{P_{a}}{P_{b}}*(\frac{D_{b}}{D_{a}})^2$`,
+
+</div>
+
+ <!-- .element: style="font-size: 40px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+- `$B_{i}$` - доля покупателей, «притягиваемых» из некоторого промежуточного населенного пункта в центр торговли 𝑖;
+- `$P_{i}$` - численность населённого пункта 𝑖, ассоциированного с соответствующим центром торговли;
+- `$D_{i}$` - расстояние от некоторого промежуточного населённого пункта до центра торговли 𝑖.
+</div>
+
+ <!-- .element: style="font-size: 30px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024120705.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+##   Критическая точка Конверса
+</div>
+
+<!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+`$D_{a \xrightarrow{ }b} = \frac{d}{1+\sqrt{\frac{P_{b}}{P_{a}}}}$`,
+
+</div>
+
+ <!-- .element: style="font-size: 45px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+- `$D_{a \xrightarrow{ }b}$` - критическая точка от населённого пункта 𝑎 до населённого пункта 𝑏;
+- `$d$` - расстояние между 𝑎 и 𝑏;
+- `$P_{i}$`- численность населённого пункта 𝑖, ассоциированного с соответствующим центром торговли.
+</div>
+
+ <!-- .element: style="font-size: 35px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024121809.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+##   Модель критической точки Конверса
+</div>
+
+<!-- .element: style="font-size: 40px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+`$\frac{B_{a}}{B_{b}} = \frac{P_{a}}{H_{b}}*(\frac{4}{d})^2$`,
+
+</div>
+
+ <!-- .element: style="font-size: 45px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+- `$B_{a}$` - доля покупателей, «притягиваемых» из населенного пункта;
+- `$B_{b}$` - доля покупателей, остающихся в городе;
+- `$P_{a}$` - численность населённого пункта, в который притягиваются покупатели;
+- `$H_{b}$` - численность населения в городе;
+- `$d$` - расстояние между городами;
+- 4 - фактор инерции.
+</div>
+
+ <!-- .element: style="font-size: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024122712.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+##   Модель критической точки Конверса
+</div>
+
+<!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+торговый центр и город, находящийся в его торговой зоне или рядом с ней, делят торговлю города примерно прямо пропорционально населению двух городов и обратно пропорционально квадратам факторов расстояния, используя 4 в качестве фактора расстояния до родного города
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+##   Обратная модель критической точки Мейера-Мейсона
+</div>
+
+<!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+`$D_{a \xrightarrow{ }b} = \frac{d}{1+\sqrt{\frac{P_{a}}{P_{b}}}}$`,
+
+</div>
+
+ <!-- .element: style="font-size: 45px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+Идея в том, что с развитием транспортной доступности и логистики в современном мире потенциальному покупателю проще преодолевать большие расстояния. 
+
+Обратная модель критической точки найдёт своё применение в том, что в малых населённых пунктах радиус притяжения торговой точки выше, чем в крупных населённых пунктах.
+</div>
+
+ <!-- .element: style="font-size: 32px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+##   Гравитационная модель Хаффа
+</div>
+
+<!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+  
+<div class="block">
+
+`$P_{ij} = \frac{\frac{S_{j}}{T^\lambda_{ij}}}{\sum_{j}^{n}\frac{S_{j}}{T^\lambda_{ij}}}$`,
+</div>
+
+ <!-- .element: style="font-size: 40px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+<div class="block">
+
+- `$P_{ij}$` - вероятность того, что покупатель из локации `$i$` пойдет в магазин `$j$`;
+- `$S_{j}$` - площадь магазина `$j$`;
+- `$T_{ij}$` - время/расстояние, которое нужно преодолеть, чтобы попасть в магазин;
+- `$\lambda$` - параметр, отражающий влияние времени в пути на покупателя.
+</div>
+
+ <!-- .element: style="font-size: 34px; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="block">
+
+`$E_{ij} = P_{ij}C_{i}$`,
+</div>
+
+ <!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+<div class="block">
+
+- `$E_{ij}$` -  предполагаемое количество покупателей из локации `$i$`, которые пойдут в магазин `$j$`;
+- `$P_{ij}$` - вероятность того, что покупатель из локации `$i$` пойдет в магазин `$j$`;
+- `$C_{i}$` - количество покупателей в локации `$i$`.
+</div>
+
+ <!-- .element: style="font-size: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Модель Хаффа <mark>предсказывает поток между двумя точками (в общем случае — между множеством точек) на основе количества потенциальных покупателей</mark> или других учитываемых потребителей в каждой торговой точке и **обратно пропорциональна некоторому показателю расстояния или времени в пути между точками.**
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Однако модель также вводит новую концепцию ___«привлекательности», которая измеряет вероятность посещения объекта потенциальными покупателями при равных внешних условиях.___
+
+Эта привлекательность может определяться такими факторами, как внутренние показатели торговой точки (чистота, очереди на кассах, наличие ценников, ассортиментная матрица и т. д.) или экономической активностью в локации, доступностью услуг или удобств, а также общей привлекательностью локации в качестве места назначения.
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Одно из ключевых отличий модели Хаффа — введение переменной, называемой <mark>«гравитационный потенциал».</mark>
+
+**Это мера общих сил притяжения в определённом месте.**
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Предполагается, что поток однороден, люди или товары — единственные факторы, которые нужно учитывать, а влияет на поток только расстояние. Комплексное влияние других факторов учитывается в интегральном коэффициенте привлекательности торговой точки, и определение этого влияния — одна из наиболее сложных задач в калибровке модели.
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<mark>Чем больше торговая площадь, тем сильнее притяжение торговой точки, её привлекательность для потенциального покупателя.</mark> 
+
+Тем самым **торговая площадь является количественным выражением ассортимента товаров.** Для учёта качества предоставляемых услуг привлекательность торговой точки и бренда в общем может корректироваться с помощью дополнительных коэффициентов, описывающих специфику моделируемой области.
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024130805.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024182328.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132402.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132417.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Использование балла Хаффа в «Магните»
+
+Для решения наших задач мы работаем с данными по домам и графами дорог. Мы используем коммерческие и бесплатные источники геоданных, которые приоритезируются в зависимости от качества, актуальности, покрытия.
+
+https://habr.com/ru/companies/magnit/articles/717536/
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132147.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Затем рассчитываем расстояния и штрафы. 
+
+Для расчёта пешеходного трафика в модели Хаффа используется соответствующий граф дорог. При этом для симуляции затрат времени на переход покупателем дорог используются дополнительные «штрафные» расстояния, тем самым здания через дорогу оказываются дальше, чем аналогичные в плане расстояния дома на той стороне дороги. Данные «штрафы» откалиброваны в результате работы команды продукта в «полях».
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132224.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132234.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Вероятностная природа показателя добавляет сложностей в процессе объяснения результатов расчётов, поэтому приходится использовать детерминистическую интерпретацию. 
+
+То есть вместо фразы «каждая семья в доме с равной вероятностью может пойти в торговую точку 1 и в торговую точку 2» используется фраза «в торговую точку 1 идёт половина семей из дома, а другая половина идёт в торговую точку 2».
+
+
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 30%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 50%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 60%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 80%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 20%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 30%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 40%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 50%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 60%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 70%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+<div class="" style="border: thin dotted blue; box-sizing: border-box; position: absolute; left: 90%; top: 0%; height: 100%; width: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+</div>
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+	      RevealPointer,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"transition":"none","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
